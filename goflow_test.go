@@ -15,9 +15,12 @@ func TestNew(t *testing.T) {
 
 func TestAdd1(t *testing.T) {
 	gf := New()
-	gf.Add("test", []string{"dep1"}, func(res map[string]interface{}) (interface{}, error) {
+
+	fn1 := func(res map[string]interface{}) (interface{}, error) {
 		return "test result", nil
-	})
+	}
+
+	gf.Add("test", []string{"dep1"}, fn1)
 	_, err := gf.Do()
 
 	if err.Error() != "Error: Function \"dep1\" not exists!" {

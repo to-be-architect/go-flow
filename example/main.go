@@ -9,24 +9,34 @@ import (
 
 func main() {
 	f1 := func(r map[string]interface{}) (interface{}, error) {
-		fmt.Println("function1 started")
-		time.Sleep(time.Millisecond * 1000)
+		fmt.Println("f1 input:", r)
+		fmt.Println("f1 start")
+		time.Sleep(time.Millisecond * 5000)
+		fmt.Println("f1 end")
 		return 1, nil
 	}
 
 	f2 := func(r map[string]interface{}) (interface{}, error) {
-		time.Sleep(time.Millisecond * 1000)
-		fmt.Println("function2 started", r["f1"])
-		return "some results", nil // errors.New("Some error")
+		fmt.Println("f2 input:", r)
+		fmt.Println("f2 start")
+		time.Sleep(time.Millisecond * 2000)
+		fmt.Println("f2 end")
+		return 2, nil
 	}
 
 	f3 := func(r map[string]interface{}) (interface{}, error) {
-		fmt.Println("function3 started", r["f1"])
-		return nil, nil
+		fmt.Println("f3 input:", r)
+		fmt.Println("f3 start")
+		time.Sleep(time.Millisecond * 3000)
+		fmt.Println("f3 end")
+		return 3, nil
 	}
 
 	f4 := func(r map[string]interface{}) (interface{}, error) {
-		fmt.Println("function4 started", r)
+		fmt.Println("f4 input:", r)
+		fmt.Println("f4 start")
+		time.Sleep(time.Millisecond * 1000)
+		fmt.Println("f4 end")
 		return nil, nil
 	}
 
@@ -38,4 +48,5 @@ func main() {
 		Do()
 
 	fmt.Println(res, err)
+
 }
